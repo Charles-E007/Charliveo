@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500&family=Roboto+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* KeepAlive Design System (Red Broadcast Edition) - Variables de thème */
+@theme {
+  --font-sans: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+
+  --color-primary: #FF0000;
+  --color-primary-hover: #CC0000;
+  --color-link: #065FD4;
+  --color-gray-600: #606060;
+  --color-surface: #F2F2F2;
+  --color-border: #E5E5E5;
+  --color-success: #2BA640;
+  --color-warning: #FB8C00;
+  --color-text-primary: #0F0F0F;
+  --color-text-secondary: #606060;
+
+  --shadow-level-1: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-level-2: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-level-3: 0 8px 32px rgba(0, 0, 0, 0.16);
+}
+
+:root {
+  color-scheme: light;
+  --bg-main: #FFFFFF;
+  --surface-gray: #F2F2F2;
+  --border-line: #E5E5E5;
+  --text-dark: #0F0F0F;
+  --text-muted: #606060;
+  --red-broadcast: #FF0000;
+  --green-up: #2BA640;
+}
+
+html, body {
+  background-color: #FFFFFF;
+  color: #0F0F0F;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Material Symbols configuration selon icon.md */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  user-select: none;
+}
+
+/* Formulaires conformes à design.md : 40px hauteur, fond #F2F2F2, bordure fine au focus */
+.form-input {
+  height: 40px;
+  background-color: #F2F2F2;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: #0F0F0F;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #0F0F0F;
+  background-color: #FFFFFF;
+}
+
+.form-input::placeholder {
+  color: #606060;
+  font-size: 14px;
+}
+
+.form-pill {
+  border-radius: 9999px;
+}
+
+/* Textareas Code & JSON (Roboto Mono 12px avec fond #F8F8F8) */
+.code-area {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #F8F8F8;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #0F0F0F;
+  transition: border-color 0.15s ease;
+}
+
+.code-area:focus {
+  outline: none;
+  border-color: #0F0F0F;
+}
+
+/* Scrollbar discrète */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5E5E5;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A3A3A3;
+}
