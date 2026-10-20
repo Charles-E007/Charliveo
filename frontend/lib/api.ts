@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getSessionToken, clearSession } from './session';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://charliveo.onrender.com';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
