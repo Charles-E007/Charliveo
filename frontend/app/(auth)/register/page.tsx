@@ -115,7 +115,7 @@ export default function RegisterPage() {
                 <input
                   type="text"
                   className="h-10 bg-[#F2F2F2] border border-transparent rounded-lg pl-9 pr-3.5 text-sm text-[#0F0F0F] placeholder-[#606060] focus:outline-none focus:border-[#0F0F0F] focus:bg-white w-full transition-colors"
-                  placeholder="Alexandre Dupont"
+                  placeholder="Charles Emmanuel"
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
@@ -132,7 +132,7 @@ export default function RegisterPage() {
                 <input
                   type="email"
                   className="h-10 bg-[#F2F2F2] border border-transparent rounded-lg pl-9 pr-3.5 text-sm text-[#0F0F0F] placeholder-[#606060] focus:outline-none focus:border-[#0F0F0F] focus:bg-white w-full transition-colors"
-                  placeholder="alex@example.com"
+                  placeholder="charles@exemple.com"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

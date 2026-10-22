@@ -29,7 +29,11 @@ export class MonitorsController {
   findAll(@Request() req: any) {
     return this.monitorsService.findAllByUser(req.user._id.toString());
   }
-
+  @Get('alerts')
+  getUserAlerts(@Request() req: any, @Query('limit') limit?: number) {
+    return this.monitorsService.getUserAlerts(req.user._id.toString(), limit ? Number(limit) : 50);
+  }
+  
   @Get(':id')
   findOne(@Request() req: any, @Param('id') id: string) {
     return this.monitorsService.findOne(id, req.user._id.toString());

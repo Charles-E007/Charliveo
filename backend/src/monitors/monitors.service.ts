@@ -144,4 +144,43 @@ export class MonitorsService {
       .limit(limit)
       .exec();
   }
+  async getUserAlerts(userId: string, limit = 50) {
+    // 1. Récupérer uniquement les moniteurs de l'utilisateur connecté
+    const userMonitors = await this.monitorModel
+      .find({ userId })
+      .select('_id name url')
+      .lean();
+
+    if (!userMonitors.length) {
+      return [];
+    }
+
+    const monitorIds = userMonitors.map((m) => m._id);
+    const monitorMap = new Map(userMonitors.map((m) => [m._id.toString(), m]));
+
+    // 2. Chercher les logs de pings correspondants
+    const logs = await this.pingLogModel
+      .find({ monitorId: { $in: monitorIds } })
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .lean();
+
+    // 3. Formater les données pour le Frontend
+    return logs.map((log: any) => {
+      const monitor = monitorMap.get(log.monitorId?.toString());
+      const isUp = log.isSuccess;
+
+      return {
+        id: log._id.toString(),
+        monitorName: monitor?.name || 'Moniteur inconnu',
+        status: isUp ? 'UP' : 'DOWN',
+        code: log.statusCode || (isUp ? 200 : 500),
+        message: isUp
+          ? `Ping réussi - Service opérationnel (Latence : ${log.responseTimeMs || 0}ms)`
+          : `Incident détecté : Erreur de connexion ou code d'erreur HTTP ${log.statusCode || 500}.`,
+        url: monitor?.url || '',
+        time: log.createdAt || log.timestamp || new Date(),
+      };
+    });
+  }
 }
