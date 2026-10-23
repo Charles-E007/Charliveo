@@ -5,6 +5,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 
 import { AuthModule } from './auth/auth.module.js';
 import { MonitorsModule } from './monitors/monitors.module.js';
+import { AdminModule } from './admin/admin.module.js';
 import { User, UserSchema } from './schemas/user.schema.js';
 import { Monitor, MonitorSchema } from './schemas/monitor.schema.js';
 import { PingLog, PingLogSchema } from './schemas/ping-log.schema.js';
@@ -29,6 +30,7 @@ import { NotificationChannel, NotificationChannelSchema } from './schemas/notifi
     ScheduleModule.forRoot(),
     AuthModule,
     MonitorsModule,
+    AdminModule,
   ],
 })
 export class AppModule {}

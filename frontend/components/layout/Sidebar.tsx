@@ -10,6 +10,7 @@ interface SidebarProps {
   onToggleCollapse?: () => void;
   mobileOpen?: boolean;
   onCloseMobile?: () => void;
+  user?: { role?: string } | null;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -17,13 +18,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onToggleCollapse,
   mobileOpen = false,
   onCloseMobile,
+  user,
 }) => {
   const pathname = usePathname();
 
+  // L'entrée "Utilisateurs" n'est exposée qu'aux comptes ADMIN
   const navItems = [
     { label: 'Dashboard', href: '/dashboard', icon: 'grid_view' },
     { label: 'Moniteurs', href: '/monitors', icon: 'monitoring' },
     { label: 'Alertes', href: '/alerts', icon: 'notifications' },
+    ...(user?.role === 'ADMIN'
+      ? [{ label: 'Utilisateurs', href: '/users', icon: 'group' }]
+      : []),
     { label: 'Profil', href: '/profile', icon: 'person' },
     { label: 'Paramètres', href: '/settings', icon: 'settings' },
   ];

@@ -89,6 +89,7 @@ export default function DashboardPage() {
 
       <div className="flex flex-1 min-w-0">
         <Sidebar
+          user={user}
           collapsed={sidebarCollapsed}
           onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
           mobileOpen={mobileMenuOpen}
