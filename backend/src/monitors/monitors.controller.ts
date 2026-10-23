@@ -72,3 +72,17 @@ export class MonitorsController {
     return this.monitorsService.getLogs(id, req.user._id.toString(), limit ? Number(limit) : 50);
   }
 }
+
+// Route publique (hors JwtAuthGuard) : utilisée par cron-job.org pour maintenir
+// l'instance Render éveillée. Accessible sur GET /ping.
+@Controller()
+export class PingController {
+  @Get('ping')
+  ping() {
+    return {
+      status: 'ok',
+      uptime: Math.floor(process.uptime()),
+      timestamp: new Date().toISOString(),
+    };
+  }
+}
